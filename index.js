@@ -1,3 +1,5 @@
+import { workerData } from "worker_threads";
+
 const tutorials = [
   'what does the this keyword mean?',
   'What is the Contutorialuctor OO pattern?',
@@ -11,6 +13,15 @@ const tutorials = [
   'what is JSONP?'
 ];
 
-const titleCased = () => {
-  return tutorials
+let titleCased = () => {
+  return tutorials.map( sentence => {
+    let letters = sentence.split('');
+    let capitalizedLetters = letters.map( letters => letters.charAt(0).toUpperCase() + letters.slice(1) )
+    let result = capitalizedLetters.join('')
+    return result
+  }) 
 }
+
+titleCased(tutorials) 
+
+
